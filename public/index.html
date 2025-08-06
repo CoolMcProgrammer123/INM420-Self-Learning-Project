@@ -11,6 +11,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
     <title>Self Learning Topic</title>
 </head>
 
@@ -19,11 +21,33 @@
         <nav>
             <img src="./assets/svg/Logo.svg" alt="DesignKitHub Logo">
         </nav>
-        
+
         <button>
             <img src="./assets/svg/BsList.svg" alt="Burger Menu">
         </button>
     </header>
+
+    <main>
+        <h2>Task Manager</h2>
+
+        <div id="board" class="board">
+            <div class="column">
+                <h1>To-Do</h1>
+                <button class="add-task-btn">+</button>
+                <ul class="task-list" id="todo"></ul>
+            </div>
+            <div class="column">
+                <h1>In-Progress</h1>
+                <button class="add-task-btn">+</button>
+                <ul class="task-list" id="inprogress"></ul>
+            </div>
+            <div class="column">
+                <h1>Finished</h1>
+                <button class="add-task-btn">+</button>
+                <ul class="task-list" id="finished"></ul>
+            </div>
+        </div>
+    </main>
 
     <script src="./assets/js/main.js"></script>
 </body>

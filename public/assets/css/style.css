@@ -24,6 +24,12 @@ body {
     color: #FFFFFF;
 
     padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 64px;
 }
 
 header {
@@ -71,4 +77,106 @@ button {
 
 button img {
     height: 36px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 1200px;
+    height: 1000px;
+
+    gap: 24px;
+}
+
+main h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.05em;
+}
+
+.board {
+    display: flex;
+    gap: 24px;
+}
+
+.column {
+    color: #121212;
+
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.column h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.05em;
+
+    color: #121212;
+}
+
+.add-task-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    width: 100%;
+    height: 40px;
+    border: 2px solid rgba(13, 152, 222, 0.2);
+    color: #0D99DE;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.add-task-btn:hover {
+    background: #0D99DE;
+    color: white;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    list-style: none;
+    min-height: 100px;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 18px;
+
+    background: white;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    cursor: move;
+    transition: transform 0.2s ease, background 0.3s ease;
+    min-height: 20px;
+}
+
+.task:hover {
+    transform: scale(1.02);
+    background: rgba(13, 152, 222, 0.2);
+}
+
+.task[contenteditable="true"]:focus {
+    outline: none;
+    border: 2px solid #0D99DE;
+    border-radius: 10px;
+    background-color: rgba(13, 152, 222, 0.2);
 }
