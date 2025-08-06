@@ -199,3 +199,18 @@ main h2 {
   resize: vertical;
   margin-top: 10px;
 }
+
+.task-action-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #0D99DE;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.task-action-btn:hover {
+  background-color: #0a7fbb;
+}

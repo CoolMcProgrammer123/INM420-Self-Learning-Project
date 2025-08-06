@@ -14,59 +14,77 @@ document.querySelectorAll('.add-task-btn').forEach(btn => {
 
     const li = document.createElement('li');
     li.className = 'task';
-    li.setAttribute('draggable', 'false'); // Temporarily disable dragging while editing
+    li.setAttribute('draggable', 'false'); // disable drag while editing
 
-    // Create input elements
+    // Title input
     const titleInput = document.createElement('input');
     titleInput.type = 'text';
     titleInput.placeholder = 'Title';
     titleInput.className = 'task-input title';
 
+    // Body input
     const bodyInput = document.createElement('textarea');
     bodyInput.placeholder = 'Body';
     bodyInput.className = 'task-input body';
 
-    // Append to task
-    li.appendChild(titleInput);
-    li.appendChild(bodyInput);
-    list.appendChild(li);
+    // Button container
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.justifyContent = 'flex-end';
+    buttonContainer.style.gap = '10px';
 
-    titleInput.focus();
+    // Add button
+    const addBtn = document.createElement('button');
+    addBtn.textContent = 'Add';
+    addBtn.className = 'task-action-btn';
 
-    // Blur tracking
-    let titleBlurred = false;
-    let bodyBlurred = false;
+    // Delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.className = 'task-action-btn';
 
-    const finishEditing = () => {
-      if (!titleBlurred || !bodyBlurred) return;
-
+    // Add event: Confirm task
+    addBtn.addEventListener('click', () => {
       const title = titleInput.value.trim();
       const body = bodyInput.value.trim();
 
       if (title === '' && body === '') {
-        li.remove(); // delete if empty
-      } else {
-        li.innerHTML = `<h3>${title}</h3><p>${body}</p>`;
-        li.setAttribute('draggable', 'true'); // Re-enable dragging
+        li.remove(); // don't add empty
+        return;
+      }
+
+      li.innerHTML = `<h3>${title}</h3><p>${body}</p>`;
+      li.setAttribute('draggable', 'true');
+    });
+
+    // Delete event
+    deleteBtn.addEventListener('click', () => {
+      li.remove();
+    });
+
+    // If both inputs are empty and blurred, auto-delete
+    const handleAutoDelete = () => {
+      const title = titleInput.value.trim();
+      const body = bodyInput.value.trim();
+
+      if (title === '' && body === '') {
+        li.remove();
       }
     };
 
-    // Event handlers
-    titleInput.addEventListener('blur', () => {
-      titleBlurred = true;
-      finishEditing();
-    });
+    titleInput.addEventListener('blur', handleAutoDelete);
+    bodyInput.addEventListener('blur', handleAutoDelete);
 
-    bodyInput.addEventListener('blur', () => {
-      bodyBlurred = true;
-      finishEditing();
-    });
+    // Add buttons
+    buttonContainer.appendChild(addBtn);
+    buttonContainer.appendChild(deleteBtn);
 
-    bodyInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        bodyInput.blur(); // triggers finish
-      }
-    });
+    // Assemble the task
+    li.appendChild(titleInput);
+    li.appendChild(bodyInput);
+    li.appendChild(buttonContainer);
+    list.appendChild(li);
+
+    titleInput.focus();
   });
 });
