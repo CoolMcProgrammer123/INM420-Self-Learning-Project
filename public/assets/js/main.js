@@ -14,42 +14,38 @@ document.querySelectorAll('.add-task-btn').forEach(btn => {
 
     const li = document.createElement('li');
     li.className = 'task';
-    li.setAttribute('draggable', 'false'); // disable drag while editing
+    li.setAttribute('draggable', 'false'); // Disable drag while editing
 
-    // Title input
     const titleInput = document.createElement('input');
     titleInput.type = 'text';
     titleInput.placeholder = 'Title';
     titleInput.className = 'task-input title';
 
-    // Body input
     const bodyInput = document.createElement('textarea');
     bodyInput.placeholder = 'Body';
     bodyInput.className = 'task-input body';
 
-    // Button container
+    // Auto-layout container
     const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.justifyContent = 'flex-end';
-    buttonContainer.style.gap = '10px';
+    buttonContainer.className = 'task-controls';
 
-    // Add button
-    const addBtn = document.createElement('button');
-    addBtn.textContent = 'Add';
-    addBtn.className = 'task-action-btn';
-
-    // Delete button
+    // Delete button (icon only)
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
-    deleteBtn.className = 'task-action-btn';
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.innerHTML = '🗑️'; // Or use <img> if you have an icon
 
-    // Add event: Confirm task
+    // Add button (fills rest)
+    const addBtn = document.createElement('button');
+    addBtn.className = 'add-btn';
+    addBtn.textContent = 'Add';
+
+    // Add button functionality
     addBtn.addEventListener('click', () => {
       const title = titleInput.value.trim();
       const body = bodyInput.value.trim();
 
       if (title === '' && body === '') {
-        li.remove(); // don't add empty
+        li.remove();
         return;
       }
 
@@ -57,17 +53,14 @@ document.querySelectorAll('.add-task-btn').forEach(btn => {
       li.setAttribute('draggable', 'true');
     });
 
-    // Delete event
+    // Delete button functionality
     deleteBtn.addEventListener('click', () => {
       li.remove();
     });
 
-    // If both inputs are empty and blurred, auto-delete
+    // Auto-delete if empty on blur
     const handleAutoDelete = () => {
-      const title = titleInput.value.trim();
-      const body = bodyInput.value.trim();
-
-      if (title === '' && body === '') {
+      if (titleInput.value.trim() === '' && bodyInput.value.trim() === '') {
         li.remove();
       }
     };
@@ -75,11 +68,9 @@ document.querySelectorAll('.add-task-btn').forEach(btn => {
     titleInput.addEventListener('blur', handleAutoDelete);
     bodyInput.addEventListener('blur', handleAutoDelete);
 
-    // Add buttons
-    buttonContainer.appendChild(addBtn);
     buttonContainer.appendChild(deleteBtn);
+    buttonContainer.appendChild(addBtn);
 
-    // Assemble the task
     li.appendChild(titleInput);
     li.appendChild(bodyInput);
     li.appendChild(buttonContainer);
