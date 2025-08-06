@@ -1,0 +1,16 @@
+{
+  "name": "inm420-self-learning-project",
+  "version": "1.0.0",
+  "description": "An interactive, responsive Kanban board built with HTML, CSS, JavaScript, and Sortable.js. Users can add tasks, drag and drop between columns (To Do, In Progress, Finished), and create new columns dynamically. Inspired by productivity tools like Trello and NotionSelf Learning Topic",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server --baseDir=\"public\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
