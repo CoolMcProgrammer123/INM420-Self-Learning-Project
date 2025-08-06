@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Cairo", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0;
+
+    background-color: #121212;
+    background-image:
+        linear-gradient(to right, rgba(13, 153, 222, 0.2) 0%, rgba(0, 0, 0, 0) 50%),
+        linear-gradient(to left, rgba(13, 153, 222, 0.2) 0%, rgba(0, 0, 0, 0) 50%);
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+    background-position: left center, right center;
+    background-attachment: fixed;
+
+    color: #FFFFFF;
+
+    padding: 32px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+
+    border-radius: 20px;
+    height: 70px;
+    width: 100%;
+    max-width: 1200px;
+    gap: 32px;
+}
+
+nav {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border-radius: 20px;
+
+    padding: 0 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav img {
+    height: 34px;
+    transform: translateY(2px);
+}
+
+button {
+    background-color: white;
+    height: 70px;
+    width: 70px;
+
+    flex-shrink: 0;
+    padding: 0;
+
+    border-radius: 20px;
+
+    border: none;
+}
+
+button img {
+    height: 36px;
+}
