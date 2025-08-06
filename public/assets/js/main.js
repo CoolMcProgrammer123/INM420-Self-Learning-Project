@@ -14,32 +14,59 @@ document.querySelectorAll('.add-task-btn').forEach(btn => {
 
     const li = document.createElement('li');
     li.className = 'task';
-    li.contentEditable = true;
-    li.textContent = '';
+    li.setAttribute('draggable', 'false'); // Temporarily disable dragging while editing
+
+    // Create input elements
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.placeholder = 'Title';
+    titleInput.className = 'task-input title';
+
+    const bodyInput = document.createElement('textarea');
+    bodyInput.placeholder = 'Body';
+    bodyInput.className = 'task-input body';
+
+    // Append to task
+    li.appendChild(titleInput);
+    li.appendChild(bodyInput);
     list.appendChild(li);
-    li.focus();
+
+    titleInput.focus();
+
+    // Blur tracking
+    let titleBlurred = false;
+    let bodyBlurred = false;
 
     const finishEditing = () => {
-      const text = li.textContent.trim();
+      if (!titleBlurred || !bodyBlurred) return;
 
-      if (text === '') {
+      const title = titleInput.value.trim();
+      const body = bodyInput.value.trim();
+
+      if (title === '' && body === '') {
         li.remove(); // delete if empty
       } else {
-        li.contentEditable = false;
+        li.innerHTML = `<h3>${title}</h3><p>${body}</p>`;
+        li.setAttribute('draggable', 'true'); // Re-enable dragging
       }
-
-      li.removeEventListener('blur', finishEditing);
-      li.removeEventListener('keydown', handleKey);
     };
 
-    const handleKey = (e) => {
-      if (e.key === 'Enter') {
+    // Event handlers
+    titleInput.addEventListener('blur', () => {
+      titleBlurred = true;
+      finishEditing();
+    });
+
+    bodyInput.addEventListener('blur', () => {
+      bodyBlurred = true;
+      finishEditing();
+    });
+
+    bodyInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
-        li.blur(); // triggers finishEditing
+        bodyInput.blur(); // triggers finish
       }
-    };
-
-    li.addEventListener('blur', finishEditing);
-    li.addEventListener('keydown', handleKey);
+    });
   });
 });

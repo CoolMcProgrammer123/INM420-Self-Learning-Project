@@ -174,9 +174,28 @@ main h2 {
     background: rgba(13, 152, 222, 0.2);
 }
 
-.task[contenteditable="true"]:focus {
+/* .task[contenteditable="true"]:focus {
     outline: none;
     border: 2px solid #0D99DE;
     border-radius: 10px;
     background-color: rgba(13, 152, 222, 0.2);
+} */
+
+.task-input {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.task-input.title {
+  font-weight: bold;
+}
+
+.task-input.body {
+  min-height: 60px;
+  resize: vertical;
+  margin-top: 10px;
 }
