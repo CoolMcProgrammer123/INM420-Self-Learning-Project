@@ -134,6 +134,7 @@ main h2 {
     height: 40px;
     border: 2px solid rgba(13, 152, 222, 0.2);
     color: #0D99DE;
+    background-color: rgba(0, 0, 0, 0);
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
