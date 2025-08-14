@@ -260,18 +260,26 @@ main h2 {
     height: 40px;
     border: none;
     border-radius: 8px;
-    background-color: #ff4d4d;
-    color: white;
+    background-color: rgb(0, 0, 0, 0);
+    border: 2px solid rgba(13, 152, 222, 0.2);
+    color: #0D99DE;
     font-size: 20px;
     cursor: pointer;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.delete-btn svg {
+    width: 28px;
 }
 
 .delete-btn:hover {
-    background-color: #e43d3d;
+    background-color: #de5a0d;
+    color: white;
 }
 
 .add-btn {
@@ -283,10 +291,11 @@ main h2 {
     color: white;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .add-btn:hover {
-    background-color: #0a7fbb;
+    background-color: #085a83;
 }
 
 @media (max-width: 768px) {
