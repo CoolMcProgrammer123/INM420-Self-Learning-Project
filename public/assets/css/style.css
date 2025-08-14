@@ -12,6 +12,7 @@ body {
     font-variation-settings:
         "slnt" 0;
 
+    /* Background gradient (reflect left and right blue gradient) */
     background-color: #121212;
     background-image:
         linear-gradient(to right, rgba(13, 153, 222, 0.2) 0%, rgba(0, 0, 0, 0) 50%),
@@ -52,6 +53,7 @@ nav {
 
     padding: 0 36px;
 
+    /* To get that space between the menu and the header itself */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,9 +61,12 @@ nav {
 
 nav img {
     height: 34px;
+
+    /* Gotta fix the alignment of the image itself */
     transform: translateY(2px);
 }
 
+/* Styling for the nav menu button */
 header button {
     background-color: white;
     height: 70px;
@@ -79,13 +84,15 @@ button img {
     height: 36px;
 }
 
+/* Main body content */
 main {
     display: flex;
     flex-direction: column;
 
     width: 100%;
+
+    /* Limit it so it doesn't span the entire screen width */
     max-width: 1200px;
-    height: 1000px;
 
     gap: 24px;
 }
@@ -97,6 +104,7 @@ main h2 {
     letter-spacing: -0.05em;
 }
 
+/* Styling for trello board starts here */
 .board {
     display: flex;
     gap: 24px;
@@ -108,17 +116,18 @@ main h2 {
     background: white;
     border-radius: 20px;
     padding: 24px;
-    /* width: 100%; */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 24px;
     box-sizing: border-box;
 
+    /* Need to ensure ALL the boxes remain the same width */
     flex: 1 1 0;
     min-width: 0;
 }
 
+/* Styling for the column titles (ex. To-Do, In-Progress, Finished) */
 .column h1 {
     font-style: normal;
     font-weight: 500;
@@ -128,6 +137,7 @@ main h2 {
     color: #121212;
 }
 
+/* Styling for the plus button for adding tasks */
 .add-task-btn {
     display: flex;
     align-items: center;
@@ -150,6 +160,8 @@ main h2 {
     color: white;
 }
 
+/* This is invisible until you add tasks */
+/* Styling for the task list container */
 .task-list {
     display: flex;
     flex-direction: column;
@@ -160,6 +172,7 @@ main h2 {
     min-width: 0;
 }
 
+/* Styling for the task boxes itself */
 .task {
     display: flex;
     flex-direction: column;
@@ -196,6 +209,7 @@ main h2 {
     letter-spacing: -0.02em;
 }
 
+/* Needed to allow word wrapping for task body text*/
 .task p,
 .task h3 {
     white-space: normal;
@@ -205,13 +219,7 @@ main h2 {
     line-height: 120%;
 }
 
-/* .task[contenteditable="true"]:focus {
-    outline: none;
-    border: 2px solid #0D99DE;
-    border-radius: 10px;
-    background-color: rgba(13, 152, 222, 0.2);
-} */
-
+/* Styling of the add task menu */
 .task-input {
     width: 100%;
     font-size: 16px;
@@ -248,6 +256,7 @@ main h2 {
     word-break: break-word;
 }
 
+/* Styling for the controls for the task boxes (ex. Delete, Add) */
 .task-controls {
     display: flex;
     width: 100%;
@@ -273,6 +282,7 @@ main h2 {
     transition: color 0.2s ease, background-color 0.2s ease;
 }
 
+/* Had to resize to fit the box */
 .delete-btn svg {
     width: 28px;
 }
@@ -305,6 +315,7 @@ main h2 {
     background-color: #085a83;
 }
 
+/* Needed to switch the flex direction to fit mobile/smaller screens */
 @media (max-width: 768px) {
     .board {
         flex-direction: column;
