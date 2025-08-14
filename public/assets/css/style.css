@@ -139,11 +139,11 @@ main h2 {
     text-align: center;
     cursor: pointer;
     user-select: none;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .add-task-btn:hover {
-    background: #0D99DE;
+    background-color: #0D99DE;
     color: white;
 }
 
@@ -163,12 +163,17 @@ main h2 {
     padding: 20px;
     gap: 18px;
 
-    background: white;
+    background-color: white;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     cursor: move;
-    transition: transform 0.2s ease, background 0.3s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease;
     min-height: 20px;
+}
+
+.task:hover {
+    transform: scale(1.02);
+    background-color: rgba(13, 152, 222, 0.2);
 }
 
 .task h3 {
@@ -185,11 +190,6 @@ main h2 {
     letter-spacing: -0.02em;
 }
 
-.task:hover {
-    transform: scale(1.02);
-    background: rgba(13, 152, 222, 0.2);
-}
-
 /* .task[contenteditable="true"]:focus {
     outline: none;
     border: 2px solid #0D99DE;
@@ -204,6 +204,19 @@ main h2 {
     border-radius: 8px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+
+    font-family: "Cairo", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0;
+
+    outline: 2px solid rgba(0, 0, 0, 0);
+    transition: outline 0.2s ease;
+}
+
+.task-input:focus {
+    outline: 2px solid #0D99DE;
 }
 
 .task-input.title {
